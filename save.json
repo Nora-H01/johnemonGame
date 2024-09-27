@@ -1,0 +1,25 @@
+{
+  "saved_on": "2024-09-27T09:38:03.141Z",
+  "day": 2,
+  "JohnemonMaster": {
+    "name": "h",
+    "johnemonCollection": [
+      {
+        "nameStudent": "mop",
+        "level": 1,
+        "attackRange": 1,
+        "defenseRange": 2,
+        "healthPool": 15,
+        "currentHealth": 15,
+        "catchPhrase": "Let the battle begin!"
+      }
+    ],
+    "healingItems": 5,
+    "reviveItems": 3,
+    "JOHNEBALLS": 10
+  },
+  "logs": [
+    "Day 1: A wild Johnemon™ appeared, but the Master chose not to fight.",
+    "Day 2: A new day has begun."
+  ]
+}
