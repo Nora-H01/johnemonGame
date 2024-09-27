@@ -8,11 +8,16 @@ As a Johnemon™ Master, your goal is to build a formidable collection, engage i
 This project is built using the following technologies:
 
 JavaScript: The primary programming language used for the game logic.
+
 Node.js: A JavaScript runtime that allows the game to be executed in the terminal.
+
 JSON: Used for saving and loading game states.
+
 Git: Version control system for managing code changes and collaboration.
-Dependencies
+
+## Dependencies
 readline (built-in Node.js module): For handling user input in the terminal.
+
 fs (built-in Node.js module): For file system operations, such as reading and writing the save file.
 
 ## How to Run the Program
@@ -24,17 +29,17 @@ bash
 Copier le code
 git clone https://github.com/Nora-H01/johnemonGame.git
 Navigate to the Project Directory: Change your current directory to the project folder:
-
+----
 bash
 Copier le code
 cd johnemonGame
 Run the Game: Use Node.js to start the game:
-
+----
 bash
 Copier le code
 node Game.js
 Follow On-Screen Instructions: Once the game starts, follow the prompts in the terminal to play, choose your Johnemon™, and enjoy the adventure!
-
+----
 Loading a Previous Game
 If a save.json file exists in the project directory, the game will prompt you to load your last saved state. Simply follow the instructions provided in the terminal.
 
