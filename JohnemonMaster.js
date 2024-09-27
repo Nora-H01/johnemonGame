@@ -8,35 +8,47 @@ class JohnemonMaster {
         this.day = 1; // Jour initial
     }
 
-    healJohnemon(johnemon) { // soigner 
-        johnemon.currentHealth = johnemon.healthPool; // Rétablit la santé actuelle à la santé maximale
-        console.log(`${johnemon.nameStudent} has been healed!`); // Affiche un message de confirmation
+    healJohnemon(johnemon) { 
+        const healPoints = Math.floor(Math.random() * 11) + 5; // Génère un nombre aléatoire entre 5 et 15
+        johnemon.currentHealth = Math.min(johnemon.currentHealth + healPoints, johnemon.healthPool); // Soigne sans dépasser la santé maximale
+        console.log(`${johnemon.nameStudent} has been healed by ${healPoints} points! Current Health: ${johnemon.currentHealth}/${johnemon.healthPool}`);
+        this.showCollection(); // Montre la collection après guérison
     }
-
-    reviveJohnemon(johnemon) { // faire revivre
-        johnemon.currentHealth = johnemon.healthPool / 2; // Rétablit la santé actuelle à la moitié de la santé maximale
-        console.log(`${johnemon.nameStudent} has been revived!`); // Affiche un message de confirmation
-    }
-
-    catchJohnemon(johnemon) { // capturer et ajouter à la collection
-        if (this.JOHNEBALLS > 0) {
-          this.johnemonCollection.push(johnemon); // Ajoute le Johnemon à la collection
-          this.JOHNEBALLS--;
-          console.log(`${johnemon.nameStudent} has been caught! Remaining Johneballs: ${this.JOHNEBALLS}`);
+    
+    reviveJohnemon(johnemon) {
+        if (johnemon.currentHealth === 0) { //que si 0 en santé
+            johnemon.currentHealth = Math.floor(johnemon.healthPool / 2); 
+            console.log(`${johnemon.nameStudent} has been revived with ${johnemon.currentHealth} health!`);
         } else {
-          console.log("No Johneballs left!");
+            console.log(`${johnemon.nameStudent} cannot be revived because it still has health!`);
         }
-      }
+    }
+
+    catchJohnemon(johnemon) { 
+        if (this.JOHNEBALLS > 0) {
+            this.johnemonCollection.push(johnemon); // Ajoute le Johnemon à la collection
+            this.JOHNEBALLS--;
+            console.log(`${johnemon.nameStudent} has been caught! Remaining Johneballs: ${this.JOHNEBALLS}`);
+        } else {
+            console.log("No Johneballs left!");
+        }
+        this.showCollection(); // Montre la collection après capture
+    }
     
     addJohnemon(johnemon) { 
         this.johnemonCollection.push(johnemon); 
-        console.log(`${johnemon.nameStudent} has been added to your collection!`); // Affiche un message de confirmation
+        console.log(`${johnemon.nameStudent} has been added to your collection!`);
+        this.showCollection(); // Montre la collection après ajout
     }
-
-    releaseJohnemon(johnemon) { // libérer un Johnemon de la collection
-        // Filtre la collection pour retirer le Johnemon libéré
+    
+    releaseJohnemon(johnemon) {
+        if (this.johnemonCollection.length === 1) { // Empêche de relâcher le dernier Johnemon
+            console.log(`You cannot release ${johnemon.nameStudent} because it's the only Johnemon in your collection!`);
+            return;
+        }
+        
         this.johnemonCollection = this.johnemonCollection.filter(j => j !== johnemon);
-        console.log(`${johnemon.nameStudent} has been released!`); // Affiche un message de confirmation
+        console.log(`${johnemon.nameStudent} has been released from your collection!`);
     }
 
     showCollection() { // afficher la collection de Johnemons
